@@ -1,8 +1,45 @@
 --[[ AEKernel File System ]]--
 
 --Make directory
+function mk_dir(a)
+  fs.makeDir(a)
+end
+
 --Remove directory
+function rm_dir(a)
+  fs.delete(a)
+end
+
 --Make file
+function mk_f(a)
+  f = io.open(a)
+  f:close()
+end
+
 --Remove file
+function rm_fl(a)
+  fs.delete(a)
+end
+
 --Write on file
+function write_f(a, s)
+  f = io.open(a, 'w+')
+  f:write(s)
+  f:close()
+end
+
 --Get file data
+function get_f(a)
+  f = io.open(a, 'r')
+  o = ''
+  while true do
+    l = f:read()
+    if l ~= nil then
+      o = o .. l
+    else
+      break
+    end
+  end
+  f:close()
+  return o
+end
