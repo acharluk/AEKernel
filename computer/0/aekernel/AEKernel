@@ -1,1 +1,10 @@
+local build = '20150506.1651'
+local version = '0.1'
+
+local workingDirectory = '/AEKernel/'
+local ApiPath = workingDirectory..'apis/'
+local requiredApis = {
+}
+
+
 
