@@ -1,1 +1,8 @@
 --[[ AEKernel File System ]]--
+
+--Make directory
+--Remove directory
+--Make file
+--Remove file
+--Write on file
+--Get file data
