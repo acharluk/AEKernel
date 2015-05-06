@@ -1,6 +1,6 @@
 os.loadAPI('aekernel/AEKernel')
-
 local aek = AEKernel:initialise()
-aek:test('this is a test')
 
+
+aek:dispose()
 os.unloadAPI('aekernel/AEKernel')

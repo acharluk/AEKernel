@@ -9,14 +9,24 @@ local _requiredApis = {
   'akfs'
 }
 
---[[ Init, stop, other functions ]]--
+--[[ Init, dispose, other functions ]]--
 initialise = function(self, args)
+  for i = 1, #_requiredApis do
+  print('loading: ' .. _ApiPath .. _requiredApis[i])
+    if not os.loadAPI(_ApiPath .. _requiredApis[i]) then
+      error('The API: ' .. _requiredApis[i] .. ' could not be loaded.')
+    end
+  end  
   _args = args
   return self
 end
 
-test = function(self, s)
-  print(s)
+dispose = function(self)
+  for i = 1, #_requiredApis do
+    if not os.unloadAPI(_ApiPath .. _requiredApis[i]) then
+      error('The API: ' .. _requiredApis[i] .. ' could not be unloaded.')
+    end
+  end
 end
 
 --[[ AKFS functions ]]--
