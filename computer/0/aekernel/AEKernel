@@ -1,13 +1,23 @@
-local build = '20150506.1651'
-local version = '0.1'
+local _build = '20150506.1651'
+local _version = '0.1'
 
-local workingDirectory = '/AEKernel/'
-local ApiPath = workingDirectory..'apis/'
-local requiredApis = {
+local _args = {}
+
+local _workingDirectory = '/AEKernel/'
+local _ApiPath = _workingDirectory..'apis/'
+local _requiredApis = {
   'akfs'
 }
 
 --[[ Init, stop, other functions ]]--
+initialise = function(self, args)
+  _args = args
+  return self
+end
+
+test = function(self, s)
+  print(s)
+end
 
 --[[ AKFS functions ]]--
 
