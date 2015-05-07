@@ -1,4 +1,4 @@
---[[ AEKernel File System ]]--
+--[[ AEKernel File System API ]]--
 
 --Make directory
 function mk_d(a)
