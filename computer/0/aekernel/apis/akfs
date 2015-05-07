@@ -1,23 +1,23 @@
 --[[ AEKernel File System ]]--
 
 --Make directory
-function mk_dir(a)
+function mk_d(a)
   fs.makeDir(a)
 end
 
 --Remove directory
-function rm_dir(a)
+function rm_d(a)
   fs.delete(a)
 end
 
 --Make file
 function mk_f(a)
-  f = io.open(a)
+  f = io.open(a, 'w')
   f:close()
 end
 
 --Remove file
-function rm_fl(a)
+function rm_f(a)
   fs.delete(a)
 end
 

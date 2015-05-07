@@ -4,32 +4,54 @@ local _version = '0.1'
 local _args = {}
 
 local _workingDirectory = '/AEKernel/'
-local _ApiPath = _workingDirectory..'apis/'
+local _apiPath = _workingDirectory..'apis/'
 local _requiredApis = {
   'akfs'
 }
 
 --[[ Init, dispose, other functions ]]--
-initialise = function(self, args)
+Initialise = function(self, args)
+  _args = args
   for i = 1, #_requiredApis do
-  print('loading: ' .. _ApiPath .. _requiredApis[i])
-    if not os.loadAPI(_ApiPath .. _requiredApis[i]) then
+    if not os.loadAPI(_apiPath .. _requiredApis[i]) then
       error('The API: ' .. _requiredApis[i] .. ' could not be loaded.')
     end
   end  
-  _args = args
   return self
 end
 
-dispose = function(self)
+Dispose = function(self)
   for i = 1, #_requiredApis do
-    if not os.unloadAPI(_ApiPath .. _requiredApis[i]) then
-      error('The API: ' .. _requiredApis[i] .. ' could not be unloaded.')
-    end
+    os.unloadAPI(_apiPath .. _requiredApis[i])
   end
 end
 
 --[[ AKFS functions ]]--
+MakeDirectory = function(self, directory)
+  akfs.mk_d(directory)
+  return self
+end
 
+RemoveDirectory = function(self, directory)
+  akfs.rm_d(directory)
+  return self
+end
 
+MakeFile = function(self, file)
+  akfs.mk_f(file)
+  return self
+end
 
+RemoveFile = function(self, file)
+  akfs.rm_f(file)
+  return self
+end
+
+WriteFile = function(self, file, data)
+  akfs.write_f(file, data)
+  return self
+end
+
+GetFile = function(self, file)
+  return akfs.get_f(file)
+end

@@ -1,6 +1,7 @@
 os.loadAPI('aekernel/AEKernel')
-local aek = AEKernel:initialise()
+local aek = AEKernel:Initialise()
 
+aek:MakeDirectory('testDir'):MakeFile('testDir/l.txt')
 
-aek:dispose()
+aek:Dispose()
 os.unloadAPI('aekernel/AEKernel')
