@@ -2,44 +2,50 @@
 
 --Make directory
 function mk_d(a)
-  fs.makeDir(a)
+	if fs.exists(a) then printError('Directory already exists!') return end
+	fs.makeDir(a)
 end
 
 --Remove directory
 function rm_d(a)
-  fs.delete(a)
+	if not fs.exists(a) then printError('Directory does not exist!') return end
+	fs.delete(a)
 end
 
 --Make file
 function mk_f(a)
-  f = io.open(a, 'w')
-  f:close()
+	if fs.exists(a) then printError('File already exists!') return end
+	f = io.open(a, 'w')
+	f:close()
 end
 
 --Remove file
 function rm_f(a)
-  fs.delete(a)
+	if not fs.exists(a) then printError('File does not exist!') return end
+	fs.delete(a)
 end
 
 --Write on file
 function write_f(a, s)
-  f = io.open(a, 'w+')
-  f:write(s)
-  f:close()
+	if not fs.exists(a) then printError('File does not exist!') return end
+	f = io.open(a, 'a')
+	f:write(s)
+	f:close()
 end
 
 --Get file data
 function get_f(a)
-  f = io.open(a, 'r')
-  o = ''
-  while true do
-    l = f:read()
-    if l ~= nil then
-      o = o .. l
-    else
-      break
-    end
-  end
-  f:close()
-  return o
+	if not fs.exists(a) then printError('File does not exist!') return end
+	f = io.open(a, 'r')
+	o = ''
+	while true do
+		l = f:read()
+		if l ~= nil then
+			o = o .. l
+		else
+			break
+		end
+	end
+	f:close()
+	return o
 end
