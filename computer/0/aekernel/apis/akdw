@@ -1,3 +1,9 @@
 --[[ AEKernel Drawing API ]]--
 
---Draw pixel, lines, rectangles, etc.!
+local _w, _h = term.getSize()
+local _bgcolor = colors.black
+local _txcolor = colors.white
+local _cursorx = 1
+local _cursory = 1
+
+--TODO: Getters/Setters
