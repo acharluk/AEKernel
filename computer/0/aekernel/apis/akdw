@@ -6,43 +6,99 @@ local _txcolor = colors.white
 local _cursorx = 1
 local _cursory = 1
 
+--[[
+	Getters
+]]--
+
+--[[ Get width ]]--
 function gw()
 	return _w
 end
 
+--[[ Get height ]]--
 function gh()
 	return _h
 end
 
-function cls(x, y)
-	term.clear()
-	scp(x, y)
+--[[ Get cursor x ]]--
+function gcx()
+	return _cursorx
 end
 
+--[[ Get cursor y ]]--
+function gcy()
+	return _cursory
+end
+
+--[[ Get cursor position ]]--
+function gcp()
+	return term.getCursorPos()
+end
+
+--[[ Get text color ]]--
+function gtc()
+	return _txcolor
+end
+
+--[[ Get background color ]]--
+function gbc()
+	return _bgcolor
+end
+
+--[[
+	Setters
+]]--
+--[[ Set cursor position ]]--
 function scp(x, y)
 	if x ~= nil and x > 0 then _cursorx = x end
 	if y ~= nil and y > 0 then _cursory = y end
 	term.setCursorPos(_cursorx, _cursory)
 end
 
+--[[ Get cursor x ]]--
 function scx(x)
 	_cursorx = x
 	scp(_cursorx, _cursory)
 end
 
+--[[ Set cursor y ]]--
 function scx(y)
 	_cursory = y
 	scp(_cursorx, _cursory)
 end
 
-function gcp()
-	return term.getCursorPos()
+--[[ Set text color ]]--
+function stc(col)
+	_txcolor = col
+	term.setTextColor(_txcolor)
+end
+--[[ Set background color ]]--
+function sbc(col)
+	_bgcolor = col
+	term.setBackgroundColor(_bgcolor)
 end
 
-function gcx()
-	return _cursorx
+--[[
+	Drawing
+]]--
+--[[ Clear screen and set cursor position ]]--
+function cls(x, y)
+	term.clear()
+	scp(x, y)
 end
 
-function gcy()
-	return _cursory
+--[[ Draw pixel ]]--
+function draw_px(x, y, bgcol, txcol, str)
+	oldx, oldy = gcp()
+	paintutils.drawPixel(x, y, bgcol)
+	scp(x, y)
+	write(str)
+	scp(oldx, oldy)
+end
+
+--[[ Draw line ]]--
+function draw_ln(minx, miny, maxx, maxy, color)
+	oldx, oldy = gcp()
+	paintutils.drawLine(minx, miny, maxx, maxy, color)
+	scp(oldx, oldy)
 end
