@@ -115,3 +115,26 @@ function draw_rect(minx, miny, maxx, maxy, filled, color)
 	sbc(oldColor)
 	scp(oldx, oldy)
 end
+
+--[[ Draw string ]]--
+function draw_str(x, y, str)
+	oldx, oldy = gcp()
+	if x > 0 and y > 0 then
+		scp(math.floor(x), math.floor(y))
+	else
+		scp(math.floor(w / 2 - #str / 2), math.floor(h / 2))
+	end
+	write(str)
+	scp(oldx, oldy)
+end
+
+--[[ Draw coloured string ]]--
+function draw_str_col(x, y, str, txcol, bgcol)
+	oldtxcol = _txcolor
+	oldbgcol = _bgcolor
+	stc(txcol)
+	sbc(bgcol)
+	draw_str(x, y, str)
+	stc(oldtxcol)
+	sbc(oldbgcol)
+end
