@@ -102,3 +102,16 @@ function draw_ln(minx, miny, maxx, maxy, color)
 	paintutils.drawLine(minx, miny, maxx, maxy, color)
 	scp(oldx, oldy)
 end
+
+--[[ Draw rectangle ]]--
+function draw_rect(minx, miny, maxx, maxy, filled, color)
+	oldColor = _bgcolor
+	oldx, oldy = gcp()
+	if filled then
+		paintutils.drawFilledBox(minx, miny, maxx, maxy, color)
+	elseif not filled then
+		paintutils.drawBox(minx, miny, maxx, maxy, color)
+	end
+	sbc(oldColor)
+	scp(oldx, oldy)
+end
