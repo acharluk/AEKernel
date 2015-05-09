@@ -1,0 +1,14 @@
+--[[ AEKernel Window API ]]--
+
+_startX = 1
+_startY = 1
+_endX = 1
+_endY = 1
+_fillColor = colors.white
+_borderColor = colors.lightGray
+_barColor = colors.blue
+_titleColor = colors.white
+
+New = function()
+
+end

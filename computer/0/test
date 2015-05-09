@@ -4,8 +4,8 @@ local aek = AEKernel:Initialise()
 --aek:MakeDirectory('testDir'):MakeFile('testDir/l.txt')
 
 --aek:WriteFile('testDir/l.txt', 'data!\n')
-aek:RemoveFile('testDir/l.txt')
-print(aek:GetFile('testDir/l.txt'))
+--aek:RemoveFile('testDir/l.txt')
+--print(aek:GetFile('testDir/l.txt'))
 
 aek:Dispose()
 os.unloadAPI('aekernel/AEKernel')

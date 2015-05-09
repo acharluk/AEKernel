@@ -6,7 +6,9 @@ local _args = {}
 local _workingDirectory = '/AEKernel/'
 local _apiPath = _workingDirectory..'apis/'
 local _requiredApis = {
-  'akfs'
+  'akfs',
+  'akdw',
+  'Window'
 }
 
 --[[ Init, dispose, other functions ]]--
